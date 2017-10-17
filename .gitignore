@@ -1,2 +1,4 @@
 gallery-wasm/emsdk
 gallery-wasm/before.sh
+gallery-wasm/build/
+gallery-wasm/build/*
