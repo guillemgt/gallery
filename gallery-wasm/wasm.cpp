@@ -1,6 +1,6 @@
-#include "../babel/Engine/engine.hpp"
-#include "../babel/Engine/os.hpp"
-#include "../babel/Engine/os_wasm.hpp"
+#include "../code/Engine/engine.hpp"
+#include "../code/Engine/os.hpp"
+#include "../code/Engine/os_wasm.hpp"
 
 // File reading & writing
 
