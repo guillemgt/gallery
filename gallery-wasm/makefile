@@ -1,7 +1,7 @@
 CC=emcc
 SOURCES:=$(wildcard ../code/*.cpp ../code/Engine/*.cpp wasm.cpp)
 EXPORTS_FILE=makefile_exports.txt
-INC_PATH=/usr/local/Cellar/freetype/2.6.3/include/freetype2
+INC_PATH=freetype_headers/
 LDFLAGS=-O2 --llvm-opts 2
 OUTPUT=build/index.html
 
