@@ -5,17 +5,27 @@
 
 #if OS == OS_WINDOWS
 
+#define OPENGL_ES 0
 #include <Windows.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
 
 #elif OS == OS_IOS
 
+#define OPENGL_ES 1
 #include <OpenGLES/EAGL.h>
 #include <OpenGLES/ES3/gl.h>
 
+#elif OS == OS_WASM
+
+#define OPENGL_ES 1
+#include <GL/glew.h>
+//#include <GLES2/gl2.h>
+#include <SDL/SDL.h> // ??
+
 #else
 
+#define OPENGL_ES 0
 #include <OpenGL/gl.h>
 #if !OPENGL_OLD
 #include <OpenGL/gl3.h>
