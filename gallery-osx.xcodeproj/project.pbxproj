@@ -28,6 +28,7 @@
 		9A2E9A521F9649CF00A772AE /* stbi_DDS_aug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug.h; path = code/Engine/Include/stb_image/stbi_DDS_aug.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A531F9649CF00A772AE /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug_c.h; path = code/Engine/Include/stb_image/stbi_DDS_aug_c.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A561F964AAE00A772AE /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = code/Engine/Include/stb_image/stb_image_aug.c; sourceTree = SOURCE_ROOT; };
+		9A2E9A581F96525400A772AE /* os_wasm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = os_wasm.hpp; path = code/Engine/os_wasm.hpp; sourceTree = SOURCE_ROOT; };
 		9ACF891D1F963CFA00BCE1C5 /* gallery-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gallery-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF89231F963CFA00BCE1C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACF89281F963CFA00BCE1C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		9ACF894D1F963FB900BCE1C5 /* ui.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ui.hpp; path = code/Engine/ui.hpp; sourceTree = SOURCE_ROOT; };
 		9ACF894E1F963FB900BCE1C5 /* ui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ui.cpp; path = code/Engine/ui.cpp; sourceTree = SOURCE_ROOT; };
 		9ACF894F1F963FB900BCE1C5 /* os_osx.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = os_osx.hpp; path = code/Engine/os_osx.hpp; sourceTree = SOURCE_ROOT; };
-		9ACF89501F963FC900BCE1C5 /* os_wasm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = os_wasm.hpp; path = ../../babel/babel/Engine/os_wasm.hpp; sourceTree = "<group>"; };
 		9ACF89591F96406C00BCE1C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = code/main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -139,8 +139,8 @@
 				9ACF893E1F963FB700BCE1C5 /* opengl.hpp */,
 				9ACF894B1F963FB800BCE1C5 /* os_ios.hpp */,
 				9ACF894F1F963FB900BCE1C5 /* os_osx.hpp */,
-				9ACF89501F963FC900BCE1C5 /* os_wasm.hpp */,
 				9ACF89491F963FB800BCE1C5 /* os_windows.hpp */,
+				9A2E9A581F96525400A772AE /* os_wasm.hpp */,
 				9ACF894A1F963FB800BCE1C5 /* os.hpp */,
 				9ACF89431F963FB700BCE1C5 /* sdl2.cpp */,
 				9ACF893B1F963FB600BCE1C5 /* sdl2.hpp */,

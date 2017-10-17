@@ -1,7 +1,7 @@
 #ifndef engine_sound_h
 #define engine_sound_h
 
-#if OS == OS_IOS
+#if OS == OS_IOS || OS == OS_WASM
 #define NO_SOUND
 typedef unsigned int ALuint;
 #endif

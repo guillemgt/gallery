@@ -249,14 +249,13 @@ int main(int argc, char ** argv){
 }
 
 #if OS == OS_WASM
-#include "../render.hpp"
+//#include "../render.hpp"
 
 extern "C" {
     
     void jsResizeWindow(int x, int y){
         windowSize = Vec2i(x, y);
-        //events.push({EVENT_RESIZE, EventData(x, y)});
-        changeWindowSize();
+        //changeWindowSize();
     }
     
 }
