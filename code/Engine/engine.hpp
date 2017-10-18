@@ -61,9 +61,6 @@
 #define sscanpf sscanf_s
 #define vsprintf vsprintf_s
 
-#define GAME_DATA_PATH "%appdata%\\ta.game.tmp"
-#define GAME_DATA_SAVE_FILE "%appdata%\\ta.game.tmp\\save.dat"
-
 #define makedir(path) CreateDirectory(path, NULL)
 
 #define DEBUG_PRINTF 0
@@ -81,9 +78,6 @@ int __cdecl printf_windows(const char *format, ...);
 #include <sys/types.h>
 
 #define makedir(path) mkdir(path, 0777)
-
-#define GAME_DATA_PATH "~/library/Application Support/ta.game.tmp"
-#define GAME_DATA_SAVE_FILE "~/library/Application Support/ta.game.tmp/save.dat"
 
 
 

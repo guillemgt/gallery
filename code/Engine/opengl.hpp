@@ -91,6 +91,10 @@ struct Vertex_PT {
     Vec3 p;
     Vec2 t;
 };
+struct Vertex_PNC {
+    Vec3 p, n;
+    RgbColor c;
+};
 
 
 void setVectorStaticBuffer(GLuint buffer, GLfloat *vert, unsigned int size);
@@ -100,6 +104,7 @@ void setVectorDynamicBuffer(GLuint buffer, GLubyte *vert, unsigned int size);
 void setVectorDynamicBuffer(GLuint buffer, Vertex_PC *vert, unsigned int size);
 void setVectorStreamBuffer(GLuint buffer, Vertex_PC *vert, unsigned int size);
 void setVectorDynamicBuffer(GLuint buffer, Vertex_PT *vert, unsigned int size);
+void setVectorStaticBuffer(GLuint buffer, Vertex_PNC *vert, unsigned int size);
 
 void _checkOpenGLError(int line, const char *file);
 

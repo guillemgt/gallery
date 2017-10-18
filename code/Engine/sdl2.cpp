@@ -239,6 +239,7 @@ int main(int argc, char ** argv){
     
     initGame();
     
+    
 #if OS != OS_WASM
     do{
         SDL_Loop();

@@ -84,7 +84,7 @@ void freeMemory(MemoryPool ma){
 
 
 void initEngineMemory(){
-    totalHeapMemory = MemoryPool(50L << 20); // 50MB
+    totalHeapMemory = MemoryPool(20L << 20); // 20MB
     totalHeapMemoryNextSection = (u8 *) totalHeapMemory.memory;
     temporaryStorage = getMemoryPool(MB(10L));
 }

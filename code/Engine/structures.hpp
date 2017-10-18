@@ -1,6 +1,7 @@
 #ifndef engine_structures_h
 #define engine_structures_h
 
+#include <math.h>
 #include <stdint.h>
 #include <assert.h>
 
@@ -323,6 +324,7 @@ inline float dot(Angle a, Vec2 v){
 
 
 #if ENGINE_ENABLE_VEC3
+
 /* Vectors of dimension 3 */
 template <typename T> struct _Vec3{
     T x, y, z;
@@ -376,6 +378,7 @@ template <typename T> struct _Vec3{
     };
     inline _Vec3(){};
 };
+
 template <typename T> inline _Vec3<T> operator*(const T b, const _Vec3<T> v) {
     return {v.x*b, v.y*b, v.z*b};
 }

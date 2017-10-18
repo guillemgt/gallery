@@ -61,6 +61,10 @@ void setVectorDynamicBuffer(GLuint buffer, GLubyte *vert, unsigned int size){
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, size*sizeof(GLubyte), vert, GL_DYNAMIC_DRAW);
 }
+void setVectorStaticBuffer(GLuint buffer, Vertex_PNC *vert, unsigned int size){
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, size*sizeof(Vertex_PNC), vert, GL_STATIC_DRAW);
+}
 void setVectorDynamicBuffer(GLuint buffer, Vertex_PC *vert, unsigned int size){
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, size*sizeof(Vertex_PC), vert, GL_DYNAMIC_DRAW);
@@ -238,7 +242,7 @@ GLuint loadShadersByText(const char *text){
     GLuint vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
     GLuint fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
     
-#if OS != OS_IOS
+#if !OPENGL_ES
     vertexShaderCode = "#version 120 \n#define VERTEX_SHADER 1\n";
     vertexShaderCode += text;
     fragmentShaderCode = "#version 120 \n#define FRAGMENT_SHADER 1\n";

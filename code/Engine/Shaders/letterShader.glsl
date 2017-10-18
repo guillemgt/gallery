@@ -1,4 +1,4 @@
-#if OS != OS_IOS
+#if !OPENGL_ES
 
 R"(
 #if   defined VERTEX_SHADER

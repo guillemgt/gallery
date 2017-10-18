@@ -4,10 +4,10 @@
 #define ENGINE_ENABLE_ANGLE      1
 #define ENGINE_ENABLE_VEC2       1
 #define ENGINE_ENABLE_VEC3       1
-#define ENGINE_ENABLE_VEC4       0
+#define ENGINE_ENABLE_VEC4       1
 #define ENGINE_ENABLE_MAT2       1
 #define ENGINE_ENABLE_MAT3       1
-#define ENGINE_ENABLE_MAT4       0
+#define ENGINE_ENABLE_MAT4       1
 #define ENGINE_ENABLE_QUATERNION 1
 #define ENGINE_ENABLE_ARRAYS     1
 #define ENGINE_ENABLE_S_ARRAYS   1

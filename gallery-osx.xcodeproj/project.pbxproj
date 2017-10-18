@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9A2E9A571F964AB100A772AE /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A561F964AAE00A772AE /* stb_image_aug.c */; };
+		9A2E9A6F1F978A9F00A772AE /* bigint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A6E1F978A8600A772AE /* bigint.cpp */; };
+		9A2E9A701F978AA100A772AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A6D1F978A8600A772AE /* main.cpp */; };
+		9A2E9A711F978AA500A772AE /* render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A681F978A8500A772AE /* render.cpp */; };
+		9A2E9A721F978AA700A772AE /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A691F978A8500A772AE /* world.cpp */; };
 		9ACF89241F963CFA00BCE1C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF89231F963CFA00BCE1C5 /* Assets.xcassets */; };
 		9ACF89331F963EEF00BCE1C5 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF89311F963EEE00BCE1C5 /* SDL2.framework */; };
 		9ACF89351F963EF700BCE1C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF89341F963EF700BCE1C5 /* OpenGL.framework */; };
@@ -20,7 +24,6 @@
 		9ACF89561F96404400BCE1C5 /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF893F1F963FB700BCE1C5 /* sound.cpp */; };
 		9ACF89571F96404A00BCE1C5 /* structures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF894C1F963FB800BCE1C5 /* structures.cpp */; };
 		9ACF89581F96404C00BCE1C5 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF894E1F963FB900BCE1C5 /* ui.cpp */; };
-		9ACF895A1F96410100BCE1C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF89591F96406C00BCE1C5 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,14 @@
 		9A2E9A531F9649CF00A772AE /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug_c.h; path = code/Engine/Include/stb_image/stbi_DDS_aug_c.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A561F964AAE00A772AE /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = code/Engine/Include/stb_image/stb_image_aug.c; sourceTree = SOURCE_ROOT; };
 		9A2E9A581F96525400A772AE /* os_wasm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = os_wasm.hpp; path = code/Engine/os_wasm.hpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A651F97832800A772AE /* wall_shader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = wall_shader.glsl; path = code/Shaders/wall_shader.glsl; sourceTree = SOURCE_ROOT; };
+		9A2E9A681F978A8500A772AE /* render.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = render.cpp; path = code/render.cpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A691F978A8500A772AE /* world.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = world.cpp; path = code/world.cpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A6A1F978A8500A772AE /* world.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = world.hpp; path = code/world.hpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A6B1F978A8500A772AE /* bigint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bigint.hpp; path = code/bigint.hpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A6C1F978A8500A772AE /* render.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = render.hpp; path = code/render.hpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A6D1F978A8600A772AE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = code/main.cpp; sourceTree = SOURCE_ROOT; };
+		9A2E9A6E1F978A8600A772AE /* bigint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bigint.cpp; path = code/bigint.cpp; sourceTree = SOURCE_ROOT; };
 		9ACF891D1F963CFA00BCE1C5 /* gallery-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gallery-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF89231F963CFA00BCE1C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACF89281F963CFA00BCE1C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,7 +69,6 @@
 		9ACF894D1F963FB900BCE1C5 /* ui.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ui.hpp; path = code/Engine/ui.hpp; sourceTree = SOURCE_ROOT; };
 		9ACF894E1F963FB900BCE1C5 /* ui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ui.cpp; path = code/Engine/ui.cpp; sourceTree = SOURCE_ROOT; };
 		9ACF894F1F963FB900BCE1C5 /* os_osx.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = os_osx.hpp; path = code/Engine/os_osx.hpp; sourceTree = SOURCE_ROOT; };
-		9ACF89591F96406C00BCE1C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = code/main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +96,34 @@
 			path = stb_image;
 			sourceTree = "<group>";
 		};
+		9A2E9A641F97831D00A772AE /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				9A2E9A651F97832800A772AE /* wall_shader.glsl */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		9A2E9A671F978A3C00A772AE /* code */ = {
+			isa = PBXGroup;
+			children = (
+				9A2E9A6E1F978A8600A772AE /* bigint.cpp */,
+				9A2E9A6B1F978A8500A772AE /* bigint.hpp */,
+				9A2E9A6D1F978A8600A772AE /* main.cpp */,
+				9A2E9A681F978A8500A772AE /* render.cpp */,
+				9A2E9A6C1F978A8500A772AE /* render.hpp */,
+				9A2E9A691F978A8500A772AE /* world.cpp */,
+				9A2E9A6A1F978A8500A772AE /* world.hpp */,
+			);
+			name = code;
+			path = gode;
+			sourceTree = "<group>";
+		};
 		9ACF89141F963CFA00BCE1C5 = {
 			isa = PBXGroup;
 			children = (
+				9A2E9A671F978A3C00A772AE /* code */,
+				9A2E9A641F97831D00A772AE /* Shaders */,
 				9ACF89361F963F0700BCE1C5 /* libfreetype.6.dylib */,
 				9ACF89311F963EEE00BCE1C5 /* SDL2.framework */,
 				9ACF89381F963F7E00BCE1C5 /* Engine */,
@@ -159,7 +194,6 @@
 		9ACF89391F963F8800BCE1C5 /* gallery */ = {
 			isa = PBXGroup;
 			children = (
-				9ACF89591F96406C00BCE1C5 /* main.cpp */,
 			);
 			path = gallery;
 			sourceTree = "<group>";
@@ -242,7 +276,10 @@
 				9ACF89561F96404400BCE1C5 /* sound.cpp in Sources */,
 				9ACF89571F96404A00BCE1C5 /* structures.cpp in Sources */,
 				9ACF89581F96404C00BCE1C5 /* ui.cpp in Sources */,
-				9ACF895A1F96410100BCE1C5 /* main.cpp in Sources */,
+				9A2E9A6F1F978A9F00A772AE /* bigint.cpp in Sources */,
+				9A2E9A701F978AA100A772AE /* main.cpp in Sources */,
+				9A2E9A721F978AA700A772AE /* world.cpp in Sources */,
+				9A2E9A711F978AA500A772AE /* render.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
