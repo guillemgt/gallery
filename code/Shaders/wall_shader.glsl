@@ -16,8 +16,9 @@ varying vec4 v_color;
 
 void main(){
     gl_Position = u_matrix*vec4(a_position, 1.0);
+    vec3 new_normal = (u_matrix*vec4(a_normal, 0.0)).xyz;
     
-    v_color = vec4(a_color * (u_ambient_light_color + dot(a_normal, u_light_direction)*u_directional_light_color), 1.0);
+    v_color = vec4(a_color * (u_ambient_light_color + dot(new_normal, u_light_direction)*u_directional_light_color), 1.0);
 }
 
 #elif defined FRAGMENT_SHADER
@@ -49,8 +50,9 @@ varying mediump vec4 v_color;
 
 void main(){
     gl_Position = u_matrix*vec4(a_position, 1.0);
+    vec3 new_normal = (u_matrix*vec4(a_normal, 0.0)).xyz;
     
-    v_color = vec4(a_color * (u_ambient_light_color + dot(a_normal, u_light_direction)*u_directional_light_color), 1.0);
+    v_color = vec4(a_color * (u_ambient_light_color + dot(new_normal, u_light_direction)*u_directional_light_color), 1.0);
 }
 #elif defined FRAGMENT_SHADER
 

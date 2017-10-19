@@ -537,24 +537,24 @@ typedef _Vec4<int>   Vec4i;
 
 /* 2x2 matrices */
 template <typename T> struct _Mat2{
-    T _00, _01, _10, _11;
+    T values[2][2];
     
     inline _Mat2 operator+(const _Mat2& m) const {
         return {
-            _00+m._00, _01+m._01,
-            _10+m._10, _11+m._11
+            values[0][0]+m.values[0][0], values[1][0]+m.values[1][0],
+            values[0][1]+m.values[0][1], values[1][1]+m.values[1][1]
         };
     }
     inline _Mat2 operator-(const _Mat2& m) const {
         return {
-            _00-m._00, _01-m._01,
-            _10-m._10, _11-m._11
+            values[0][0]-m.values[0][0], values[1][0]-m.values[1][0],
+            values[0][1]-m.values[0][1], values[1][1]-m.values[1][1]
         };
     }
     inline _Mat2 operator*(const _Mat2& m) const {
         return {
-            _00*m._00+_01*m._10, _00*m._01+_01*m._11,
-            _10*m._00+_11*m._10, _10*m._01+_11*m._11
+            values[0][0]*m.values[0][0]+values[1][0]*m.values[0][1], values[0][0]*m.values[1][0]+values[1][0]*m.values[1][1],
+            values[0][1]*m.values[0][0]+values[1][1]*m.values[0][1], values[0][1]*m.values[1][0]+values[1][1]*m.values[1][1]
         };
     }
     
@@ -572,49 +572,57 @@ template <typename T> struct _Mat2{
     }
     
     inline _Mat2(T b00, T b01, T b10, T b11){
-        _00 = b00;
-        _01 = b01;
-        _10 = b10;
-        _11 = b11;
+        values[0][0] = b00;
+        values[1][0] = b01;
+        values[0][1] = b10;
+        values[1][1] = b11;
     };
 };
 
 template <typename T> inline _Vec2<T> operator*(const _Mat2<T>& m, const _Vec2<T>& v) {
     return {
-        m._00*v.x+m._01*v.y,
-        m._10*v.x+m._11*v.y
+        m.values[0][0]*v.x+m.values[1][0]*v.y,
+        m.values[0][1]*v.x+m.values[1][1]*v.y
     };
 }
 template <typename T> inline _Vec2<T> operator*(const _Vec2<T>& v, const _Mat2<T>& m) {
     return {
-        m._00*v.x+m._10*v.y,
-        m._01*v.x+m._11*v.y
+        m.values[0][0]*v.x+m.values[0][1]*v.y,
+        m.values[1][0]*v.x+m.values[1][1]*v.y
     };
 }
 
 /* 3x3 matrices */
 template <typename T> struct _Mat3{
-    T _00, _01, _02, _10, _11, _12, _20, _21, _22;
+    T values[3][3];
     
     inline _Mat3 operator+(const _Mat3& m) const {
         return {
-            _00+m._00, _01+m._01, _02+m._02,
-            _10+m._10, _11+m._11, _12+m._12,
-            _20+m._20, _21+m._21, _22+m._22
+            values[0][0]+m.values[0][0], values[1][0]+m.values[1][0], values[2][0]+m.values[2][0],
+            values[0][1]+m.values[0][1], values[1][1]+m.values[1][1], values[2][1]+m.values[2][1],
+            values[0][2]+m.values[0][2], values[1][2]+m.values[1][2], values[2][2]+m.values[2][2]
         };
     }
     inline _Mat3 operator-(const _Mat3& m) const {
         return {
-            _00-m._00, _01-m._01, _02-m._02,
-            _10-m._10, _11-m._11, _12-m._12,
-            _20-m._20, _21-m._21, _22-m._22
+            values[0][0]-m.values[0][0], values[1][0]-m.values[1][0], values[2][0]-m.values[2][0],
+            values[0][1]-m.values[0][1], values[1][1]-m.values[1][1], values[2][1]-m.values[2][1],
+            values[0][2]-m.values[0][2], values[1][2]-m.values[1][2], values[2][2]-m.values[2][2]
         };
     }
     inline _Mat3 operator*(const _Mat3& m) const {
         return {
-            _00*m._00+_01*m._10+_02*m._20, _00*m._01+_01*m._11+_02*m._21, _00*m._02+_01*m._12+_02*m._22,
-            _10*m._00+_11*m._10+_12*m._20, _10*m._01+_11*m._11+_12*m._21, _10*m._02+_11*m._12+_12*m._22,
-            _20*m._00+_21*m._10+_22*m._20, _20*m._01+_21*m._11+_22*m._21, _20*m._02+_21*m._12+_22*m._22,
+            values[0][0]*m.values[0][0]+values[1][0]*m.values[0][1]+values[2][0]*m.values[0][2],
+            values[0][0]*m.values[1][0]+values[1][0]*m.values[1][1]+values[2][0]*m.values[1][2],
+            values[0][0]*m.values[2][0]+values[1][0]*m.values[2][1]+values[2][0]*m.values[2][2],
+            
+            values[0][1]*m.values[0][0]+values[1][1]*m.values[0][1]+values[2][1]*m.values[0][2],
+            values[0][1]*m.values[1][0]+values[1][1]*m.values[1][1]+values[2][1]*m.values[1][2],
+            values[0][1]*m.values[2][0]+values[1][1]*m.values[2][1]+values[2][1]*m.values[2][2],
+            
+            values[0][2]*m.values[0][0]+values[1][2]*m.values[0][1]+values[2][2]*m.values[0][2],
+            values[0][2]*m.values[1][0]+values[1][2]*m.values[1][1]+values[2][2]*m.values[1][2],
+            values[0][2]*m.values[2][0]+values[1][2]*m.values[2][1]+values[2][2]*m.values[2][2],
         };
     }
     
@@ -632,59 +640,74 @@ template <typename T> struct _Mat3{
     }
     
     inline _Mat3(T b00, T b01, T b02, T b10, T b11, T b12, T b20, T b21, T b22){
-        _00 = b00;
-        _01 = b01;
-        _02 = b02;
-        _10 = b10;
-        _11 = b11;
-        _12 = b12;
-        _20 = b20;
-        _21 = b21;
-        _22 = b22;
+        values[0][0] = b00;
+        values[1][0] = b01;
+        values[2][0] = b02;
+        values[0][1] = b10;
+        values[1][1] = b11;
+        values[2][1] = b12;
+        values[0][2] = b20;
+        values[1][2] = b21;
+        values[2][2] = b22;
     };
 };
 template <typename T> inline _Vec3<T> operator*(const _Mat3<T>& m, const _Vec3<T>& v) {
     return {
-        m._00*v.x+m._01*v.y+m._02*v.z,
-        m._10*v.x+m._11*v.y+m._12*v.z,
-        m._20*v.x+m._21*v.y+m._22*v.z
+        m.values[0][0]*v.x+m.values[1][0]*v.y+m.values[2][0]*v.z,
+        m.values[0][1]*v.x+m.values[1][1]*v.y+m.values[2][1]*v.z,
+        m.values[0][2]*v.x+m.values[1][2]*v.y+m.values[2][2]*v.z
     };
 }
 template <typename T> inline _Vec3<T> operator*(const _Vec3<T>& v, const _Mat3<T>& m) {
     return {
-        m._00*v.x+m._10*v.y+m._20*v.z,
-        m._01*v.x+m._11*v.y+m._21*v.z,
-        m._02*v.x+m._12*v.y+m._22*v.z
+        m.values[0][0]*v.x+m.values[0][1]*v.y+m.values[0][2]*v.z,
+        m.values[1][0]*v.x+m.values[1][1]*v.y+m.values[1][2]*v.z,
+        m.values[2][0]*v.x+m.values[2][1]*v.y+m.values[2][2]*v.z
     };
 }
 
 #if ENGINE_ENABLE_MAT4
 /* 4x4 matrices */
 template <typename T> struct _Mat4{
-    T _00, _01, _02, _03, _10, _11, _12, _13, _20, _21, _22, _23, _30, _31, _32, _33;
+    T values[4][4];
     
     inline _Mat4 operator+(const _Mat4& m) const {
         return {
-            _00+m._00, _01+m._01, _02+m._02, _03+m._03,
-            _10+m._10, _11+m._11, _12+m._12, _13+m._13,
-            _20+m._20, _21+m._21, _22+m._22, _23+m._23,
-            _30+m._30, _31+m._31, _32+m._32, _33+m._33,
+            values[0][0]+m.values[0][0], values[1][0]+m.values[1][0], values[2][0]+m.values[2][0], values[3][0]+m.values[3][0],
+            values[0][1]+m.values[0][1], values[1][1]+m.values[1][1], values[2][1]+m.values[2][1], values[3][1]+m.values[3][1],
+            values[0][2]+m.values[0][2], values[1][2]+m.values[1][2], values[2][2]+m.values[2][2], values[3][2]+m.values[3][2],
+            values[0][3]+m.values[0][3], values[1][3]+m.values[1][3], values[2][3]+m.values[2][3], values[3][3]+m.values[3][3],
         };
     }
     inline _Mat4 operator-(const _Mat4& m) const {
         return {
-            _00-m._00, _01-m._01, _02-m._02, _03-m._03,
-            _10-m._10, _11-m._11, _12-m._12, _13-m._13,
-            _20-m._20, _21-m._21, _22-m._22, _23-m._23,
-            _30-m._30, _31-m._31, _32-m._32, _33-m._33,
+            values[0][0]-m.values[0][0], values[1][0]-m.values[1][0], values[2][0]-m.values[2][0], values[3][0]-m.values[3][0],
+            values[0][1]-m.values[0][1], values[1][1]-m.values[1][1], values[2][1]-m.values[2][1], values[3][1]-m.values[3][1],
+            values[0][2]-m.values[0][2], values[1][2]-m.values[1][2], values[2][2]-m.values[2][2], values[3][2]-m.values[3][2],
+            values[0][3]-m.values[0][3], values[1][3]-m.values[1][3], values[2][3]-m.values[2][3], values[3][3]-m.values[3][3],
         };
     }
     inline _Mat4 operator*(const _Mat4& m) const {
         return {
-            _00*m._00+_01*m._10+_02*m._20+_03*m._30, _00*m._01+_01*m._11+_02*m._21+_03*m._31, _00*m._02+_01*m._12+_02*m._22+_03*m._32, _00*m._03+_01*m._13+_02*m._23+_03*m._33,
-            _10*m._00+_11*m._10+_12*m._20+_13*m._30, _10*m._01+_11*m._11+_12*m._21+_13*m._31, _10*m._02+_11*m._12+_12*m._22+_13*m._32, _10*m._03+_11*m._13+_12*m._23+_13*m._33,
-            _20*m._00+_21*m._10+_22*m._20+_23*m._30, _20*m._01+_21*m._11+_22*m._21+_23*m._31, _20*m._02+_21*m._12+_22*m._22+_23*m._32, _20*m._03+_21*m._13+_22*m._23+_23*m._33,
-            _30*m._00+_31*m._10+_32*m._20+_33*m._30, _30*m._01+_31*m._11+_32*m._21+_33*m._31, _30*m._02+_31*m._12+_32*m._22+_33*m._32, _30*m._03+_31*m._13+_32*m._23+_33*m._33,
+            values[0][0]*m.values[0][0] + values[1][0]*m.values[0][1] + values[2][0]*m.values[0][2] + values[3][0]*m.values[0][3],
+            values[0][0]*m.values[1][0] + values[1][0]*m.values[1][1] + values[2][0]*m.values[1][2] + values[3][0]*m.values[1][3],
+            values[0][0]*m.values[2][0] + values[1][0]*m.values[2][1] + values[2][0]*m.values[2][2] + values[3][0]*m.values[2][3],
+            values[0][0]*m.values[3][0] + values[1][0]*m.values[3][1] + values[2][0]*m.values[3][2] + values[3][0]*m.values[3][3],
+            
+            values[0][1]*m.values[0][0] + values[1][1]*m.values[0][1] + values[2][1]*m.values[0][2] + values[3][1]*m.values[0][3],
+            values[0][1]*m.values[1][0] + values[1][1]*m.values[1][1] + values[2][1]*m.values[1][2] + values[3][1]*m.values[1][3],
+            values[0][1]*m.values[2][0] + values[1][1]*m.values[2][1] + values[2][1]*m.values[2][2] + values[3][1]*m.values[2][3],
+            values[0][1]*m.values[3][0] + values[1][1]*m.values[3][1] + values[2][1]*m.values[3][2] + values[3][1]*m.values[3][3],
+            
+            values[0][2]*m.values[0][0] + values[1][2]*m.values[0][1] + values[2][2]*m.values[0][2] + values[3][2]*m.values[0][3],
+            values[0][2]*m.values[1][0] + values[1][2]*m.values[1][1] + values[2][2]*m.values[1][2] + values[3][2]*m.values[1][3],
+            values[0][2]*m.values[2][0] + values[1][2]*m.values[2][1] + values[2][2]*m.values[2][2] + values[3][2]*m.values[2][3],
+            values[0][2]*m.values[3][0] + values[1][2]*m.values[3][1] + values[2][2]*m.values[3][2] + values[3][2]*m.values[3][3],
+            
+            values[0][3]*m.values[0][0] + values[1][3]*m.values[0][1] + values[2][3]*m.values[0][2] + values[3][3]*m.values[0][3],
+            values[0][3]*m.values[1][0] + values[1][3]*m.values[1][1] + values[2][3]*m.values[1][2] + values[3][3]*m.values[1][3],
+            values[0][3]*m.values[2][0] + values[1][3]*m.values[2][1] + values[2][3]*m.values[2][2] + values[3][3]*m.values[2][3],
+            values[0][3]*m.values[3][0] + values[1][3]*m.values[3][1] + values[2][3]*m.values[3][2] + values[3][3]*m.values[3][3],
         };
     }
     
@@ -702,43 +725,70 @@ template <typename T> struct _Mat4{
     }
     
     inline _Mat4(T b00, T b01, T b02, T b03, T b10, T b11, T b12, T b13, T b20, T b21, T b22, T b23, T b30, T b31, T b32, T b33){
-        _00 = b00;
-        _01 = b01;
-        _02 = b02;
-        _03 = b03;
-        _10 = b10;
-        _11 = b11;
-        _12 = b12;
-        _13 = b13;
-        _20 = b20;
-        _21 = b21;
-        _22 = b22;
-        _23 = b23;
-        _30 = b30;
-        _31 = b31;
-        _32 = b32;
-        _33 = b33;
+        values[0][0] = b00;
+        values[0][1] = b10;
+        values[0][2] = b20;
+        values[0][3] = b30;
+        values[1][0] = b01;
+        values[1][1] = b11;
+        values[1][2] = b21;
+        values[1][3] = b31;
+        values[2][0] = b02;
+        values[2][1] = b12;
+        values[2][2] = b22;
+        values[2][3] = b32;
+        values[3][0] = b03;
+        values[3][1] = b13;
+        values[3][2] = b23;
+        values[3][3] = b33;
     };
     
     inline _Mat4(){};
 };
 template <typename T> inline _Vec4<T> operator*(const _Mat4<T>& m, const _Vec4<T>& v) {
     return {
-        m._00*v.x+m._01*v.y+m._02*v.z+m._03*v.w,
-        m._10*v.x+m._11*v.y+m._12*v.z+m._13*v.w,
-        m._20*v.x+m._21*v.y+m._22*v.z+m._23*v.w,
-        m._30*v.x+m._31*v.y+m._32*v.z+m._33*v.w,
+        m.values[0][0]*v.x+m.values[1][0]*v.y+m.values[2][0]*v.z+m.values[3][0]*v.w,
+        m.values[0][1]*v.x+m.values[1][1]*v.y+m.values[2][1]*v.z+m.values[3][1]*v.w,
+        m.values[0][2]*v.x+m.values[1][2]*v.y+m.values[2][2]*v.z+m.values[3][2]*v.w,
+        m.values[0][3]*v.x+m.values[1][3]*v.y+m.values[2][3]*v.z+m.values[3][3]*v.w,
     };
 }
 template <typename T> inline _Vec4<T> operator*(const _Vec4<T>& v, const _Mat4<T>& m) {
     return {
-        m._00*v.x+m._10*v.y+m._20*v.z+m._30*v.w,
-        m._01*v.x+m._11*v.y+m._21*v.z+m._31*v.w,
-        m._02*v.x+m._12*v.y+m._22*v.z+m._32*v.w,
-        m._03*v.x+m._13*v.y+m._23*v.z+m._33*v.w,
+        m.values[0][0]*v.x+m.values[0][1]*v.y+m.values[0][2]*v.z+m.values[0][3]*v.w,
+        m.values[1][0]*v.x+m.values[1][1]*v.y+m.values[1][2]*v.z+m.values[1][3]*v.w,
+        m.values[2][0]*v.x+m.values[2][1]*v.y+m.values[2][2]*v.z+m.values[2][3]*v.w,
+        m.values[3][0]*v.x+m.values[3][1]*v.y+m.values[3][2]*v.z+m.values[3][3]*v.w,
     };
 }
 typedef _Mat4<float> Mat4;
+
+inline Mat4 get_perspective_matrix(const Angle half_pov, const float near, const float far){
+    float s = half_pov.c/half_pov.s;
+    float f = -far/(far-near);
+    return Mat4(
+                s, 0.f, 0.f, 0.f,
+                0.f,   s, 0.f, 0.f,
+                0.f, 0.f, f, f*near,
+                0.f, 0.f,-1.f, 0.f
+                );
+}
+inline Mat4 get_translation_matrix(const Vec3 v){
+    return Mat4(
+                1.f, 0.f, 0.f, v.x,
+                0.f, 1.f, 0.f, v.y,
+                0.f, 0.f, 1.f, v.z,
+                0.f, 0.f, 0.f, 1.f
+                );
+}
+inline Mat4 get_rotation_matrix_y(const Angle a){
+    return Mat4(
+                a.c, 0.f,-a.s, 0.f,
+                0.f, 1.f, 0.f, 0.f,
+                a.s, 0.f, a.c, 0.f,
+                0.f, 0.f, 0.f, 1.f
+                );
+}
 #endif
 
 

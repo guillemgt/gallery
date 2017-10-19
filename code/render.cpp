@@ -44,15 +44,53 @@ void init_openGL(){
     
     // We define the positions, normals and colors of the triangles of the cube
     Vec3 positions[] = {
-        Vec3(-1.f, -1.f, +0.f),
-        Vec3(-1.f, +1.f, +0.f),
-        Vec3(+1.f, -1.f, +0.f),
+        // Front face
+        Vec3(-1.f, -1.f, +1.f),
+        Vec3(-1.f, +1.f, +1.f),
+        Vec3(+1.f, -1.f, +1.f),
         
-        Vec3(+1.f, -1.f, +0.f),
-        Vec3(-1.f, +1.f, +0.f),
-        Vec3(+1.f, +1.f, +0.f),
+        Vec3(+1.f, -1.f, +1.f),
+        Vec3(-1.f, +1.f, +1.f),
+        Vec3(+1.f, +1.f, +1.f),
+        
+        // Back face
+        Vec3(-1.f, -1.f, -1.f),
+        Vec3(-1.f, +1.f, -1.f),
+        Vec3(+1.f, -1.f, -1.f),
+        
+        Vec3(+1.f, -1.f, -1.f),
+        Vec3(-1.f, +1.f, -1.f),
+        Vec3(+1.f, +1.f, -1.f),
+        
+        // Left face
+        Vec3(-1.f, -1.f, +1.f),
+        Vec3(-1.f, +1.f, -1.f),
+        Vec3(-1.f, +1.f, +1.f),
+        
+        Vec3(-1.f, -1.f, -1.f),
+        Vec3(-1.f, +1.f, -1.f),
+        Vec3(-1.f, -1.f, +1.f),
+        
+        // Right face
+        Vec3(+1.f, -1.f, +1.f),
+        Vec3(+1.f, +1.f, -1.f),
+        Vec3(+1.f, +1.f, +1.f),
+        
+        Vec3(+1.f, -1.f, -1.f),
+        Vec3(+1.f, +1.f, -1.f),
+        Vec3(+1.f, -1.f, +1.f),
     };
     Vec3 normals[] = {
+        // Front face
+        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, 0.f, +1.f),
+        
+        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, 0.f, +1.f),
+        
+        // Back face
         Vec3(0.f, 0.f, -1.f),
         Vec3(0.f, 0.f, -1.f),
         Vec3(0.f, 0.f, -1.f),
@@ -60,8 +98,54 @@ void init_openGL(){
         Vec3(0.f, 0.f, -1.f),
         Vec3(0.f, 0.f, -1.f),
         Vec3(0.f, 0.f, -1.f),
+        
+        // Left face
+        Vec3(-1.f, 0.f, 0.f),
+        Vec3(-1.f, 0.f, 0.f),
+        Vec3(-1.f, 0.f, 0.f),
+        
+        Vec3(-1.f, 0.f, 0.f),
+        Vec3(-1.f, 0.f, 0.f),
+        Vec3(-1.f, 0.f, 0.f),
+        
+        // Right face
+        Vec3(+1.f, 0.f, 0.f),
+        Vec3(+1.f, 0.f, 0.f),
+        Vec3(+1.f, 0.f, 0.f),
+        
+        Vec3(+1.f, 0.f, 0.f),
+        Vec3(+1.f, 0.f, 0.f),
+        Vec3(+1.f, 0.f, 0.f),
     };
     RgbColor colors[] = {
+        // Front face
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        // Back face
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        // Left face
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        {255, 255, 255},
+        {255, 255, 255},
+        {255, 255, 255},
+        
+        // Right face
         {255, 255, 255},
         {255, 255, 255},
         {255, 255, 255},
@@ -72,35 +156,38 @@ void init_openGL(){
     };
     
     // We put everything into one big vector, interleaved
-    Vertex_PNC vertices[6]; // PNC means position, normal, color
-    for(int i=0; i<6; i++)
+    Vertex_PNC vertices[24]; // PNC means position, normal, color
+    for(int i=0; i<24; i++)
         vertices[i] = {positions[i], normals[i], colors[i]};
     
     // We put all the info in the buffer
-    setVectorStaticBuffer(wall_buffer, vertices, 6);
+    setVectorStaticBuffer(wall_buffer, vertices, 24);
     
 }
 
 void draw_scene(){
+    static float t = 0.f;
     glClearColor(0.4f, 0.4f, 0.4f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glUseProgram(wall_program.id);
     
+    const Angle half_pov = Angle(M_PI_4);
+    Mat4 perspective_matrix = get_perspective_matrix(half_pov, 0.5f, 10.5f);
+    Mat4 translation_matrix = get_translation_matrix(Vec3(0.f, 0.f, -5.f));
+    Mat4 rotation_matrix = get_rotation_matrix_y(Angle(t));
+    t += 0.03f;
     
-    GLfloat matrix_uniform[16] = {
-        0.5f,  0.f,  0.f, 0.f,
-        0.f,  0.5f,  0.f, 0.f,
-        0.f,   0.f, 0.5f,  0.f,
-        0.f,   0.f,  0.f, 1.f
-    };
+    Mat4 final_matrix = perspective_matrix * translation_matrix * rotation_matrix;
+    
+    
     checkOpenGLError();
-    glUniformMatrix4fv(wall_program.matrix, 1, GL_FALSE, matrix_uniform);
+    glUniformMatrix4fv(wall_program.matrix, 1, GL_FALSE, &final_matrix.values[0][0]);
     glUniform3f(wall_program.light_direction, 0.f, 0.f, -1.f);
-    glUniform3f(wall_program.directional_light_color, 0.1f, 0.1f, 0.1f);
-    glUniform3f(wall_program.ambient_light_color,     0.9f, 0.9f, 0.9f);
+    glUniform3f(wall_program.directional_light_color, 0.2f, 0.2f, 0.2f);
+    glUniform3f(wall_program.ambient_light_color,     0.8f, 0.8f, 0.8f);
     checkOpenGLError();
     
     glBindVertexArray(wall_vao);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDrawArrays(GL_TRIANGLES, 0, 24);
 }
