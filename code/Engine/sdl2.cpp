@@ -6,6 +6,7 @@
 #include "sdl2.hpp"
 
 extern Vec2i windowSize;
+extern f32 TIME_STEP;
 
 #if OS != OS_WASM
 #define WindowThingy SDL_Window
@@ -234,6 +235,8 @@ int main(int argc, char ** argv){
     glewExperimental = GL_TRUE;
     glewInit();
 #endif
+    
+    TIME_STEP = 1./60.;
     
     initEngine();
     

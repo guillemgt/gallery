@@ -762,6 +762,12 @@ template <typename T> inline _Vec4<T> operator*(const _Vec4<T>& v, const _Mat4<T
     };
 }
 typedef _Mat4<float> Mat4;
+const Mat4 switch_y_and_z = {
+        1.f, 0.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 0.f, 1.f
+};
 
 inline Mat4 get_perspective_matrix(const Angle half_pov, const float near, const float far){
     float s = half_pov.c/half_pov.s;
@@ -781,11 +787,27 @@ inline Mat4 get_translation_matrix(const Vec3 v){
                 0.f, 0.f, 0.f, 1.f
                 );
 }
+inline Mat4 get_rotation_matrix_x(const Angle a){
+    return Mat4(
+                1.f, 0.f, 0.f, 0.f,
+                0.f, a.c,-a.s, 0.f,
+                0.f, a.s, a.c, 0.f,
+                0.f, 0.f, 0.f, 1.f
+                );
+}
 inline Mat4 get_rotation_matrix_y(const Angle a){
     return Mat4(
                 a.c, 0.f,-a.s, 0.f,
                 0.f, 1.f, 0.f, 0.f,
                 a.s, 0.f, a.c, 0.f,
+                0.f, 0.f, 0.f, 1.f
+                );
+}
+inline Mat4 get_rotation_matrix_z(const Angle a){
+    return Mat4(
+                a.c,-a.s, 0.f, 0.f,
+                a.s, a.c, 0.f, 0.f,
+                0.f, 0.f, 1.f, 0.f,
                 0.f, 0.f, 0.f, 1.f
                 );
 }

@@ -1,6 +1,7 @@
 #include "Engine/engine.hpp"
 
 #include "render.hpp"
+#include "main.hpp"
 
 struct {
     GLuint id;
@@ -45,22 +46,22 @@ void init_openGL(){
     // We define the positions, normals and colors of the triangles of the cube
     Vec3 positions[] = {
         // Front face
-        Vec3(-1.f, -1.f, +1.f),
+        Vec3(-1.f, +1.f, -1.f),
         Vec3(-1.f, +1.f, +1.f),
-        Vec3(+1.f, -1.f, +1.f),
+        Vec3(+1.f, +1.f, -1.f),
         
-        Vec3(+1.f, -1.f, +1.f),
+        Vec3(+1.f, +1.f, -1.f),
         Vec3(-1.f, +1.f, +1.f),
         Vec3(+1.f, +1.f, +1.f),
         
         // Back face
         Vec3(-1.f, -1.f, -1.f),
-        Vec3(-1.f, +1.f, -1.f),
+        Vec3(-1.f, -1.f, +1.f),
         Vec3(+1.f, -1.f, -1.f),
         
         Vec3(+1.f, -1.f, -1.f),
-        Vec3(-1.f, +1.f, -1.f),
-        Vec3(+1.f, +1.f, -1.f),
+        Vec3(-1.f, -1.f, +1.f),
+        Vec3(+1.f, -1.f, +1.f),
         
         // Left face
         Vec3(-1.f, -1.f, +1.f),
@@ -82,22 +83,22 @@ void init_openGL(){
     };
     Vec3 normals[] = {
         // Front face
-        Vec3(0.f, 0.f, +1.f),
-        Vec3(0.f, 0.f, +1.f),
-        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, +1.f, 0.f),
+        Vec3(0.f, +1.f, 0.f),
+        Vec3(0.f, +1.f, 0.f),
         
-        Vec3(0.f, 0.f, +1.f),
-        Vec3(0.f, 0.f, +1.f),
-        Vec3(0.f, 0.f, +1.f),
+        Vec3(0.f, +1.f, 0.f),
+        Vec3(0.f, +1.f, 0.f),
+        Vec3(0.f, +1.f, 0.f),
         
         // Back face
-        Vec3(0.f, 0.f, -1.f),
-        Vec3(0.f, 0.f, -1.f),
-        Vec3(0.f, 0.f, -1.f),
+        Vec3(0.f, -1.f, 0.f),
+        Vec3(0.f, -1.f, 0.f),
+        Vec3(0.f, -1.f, 0.f),
         
-        Vec3(0.f, 0.f, -1.f),
-        Vec3(0.f, 0.f, -1.f),
-        Vec3(0.f, 0.f, -1.f),
+        Vec3(0.f, -1.f, 0.f),
+        Vec3(0.f, -1.f, 0.f),
+        Vec3(0.f, -1.f, 0.f),
         
         // Left face
         Vec3(-1.f, 0.f, 0.f),
@@ -174,11 +175,11 @@ void draw_scene(){
     
     const Angle half_pov = Angle(M_PI_4);
     Mat4 perspective_matrix = get_perspective_matrix(half_pov, 0.5f, 10.5f);
-    Mat4 translation_matrix = get_translation_matrix(Vec3(0.f, 0.f, -5.f));
-    Mat4 rotation_matrix = get_rotation_matrix_y(Angle(t));
+    Mat4 translation_matrix = get_translation_matrix(Vec3(player.position_relative_to_coords, -2.f));
+    Mat4 rotation_matrix = get_rotation_matrix_z(Angle(t));
     t += 0.03f;
     
-    Mat4 final_matrix = perspective_matrix * translation_matrix * rotation_matrix;
+    Mat4 final_matrix = perspective_matrix * switch_y_and_z * translation_matrix * rotation_matrix;
     
     
     checkOpenGLError();

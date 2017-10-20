@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A2718E61F9A0490009A37D9 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = main.hpp; path = code/main.hpp; sourceTree = SOURCE_ROOT; };
 		9A2E9A511F9649CF00A772AE /* stb_image_aug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_image_aug.h; path = code/Engine/Include/stb_image/stb_image_aug.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A521F9649CF00A772AE /* stbi_DDS_aug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug.h; path = code/Engine/Include/stb_image/stbi_DDS_aug.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A531F9649CF00A772AE /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug_c.h; path = code/Engine/Include/stb_image/stbi_DDS_aug_c.h; sourceTree = SOURCE_ROOT; };
@@ -110,6 +111,7 @@
 				9A2E9A6E1F978A8600A772AE /* bigint.cpp */,
 				9A2E9A6B1F978A8500A772AE /* bigint.hpp */,
 				9A2E9A6D1F978A8600A772AE /* main.cpp */,
+				9A2718E61F9A0490009A37D9 /* main.hpp */,
 				9A2E9A681F978A8500A772AE /* render.cpp */,
 				9A2E9A6C1F978A8500A772AE /* render.hpp */,
 				9A2E9A691F978A8500A772AE /* world.cpp */,
