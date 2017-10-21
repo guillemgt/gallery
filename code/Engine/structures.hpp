@@ -835,6 +835,11 @@ template <typename T> struct _Quaternion{
     }
 };
 
+template <typename T> _Quaternion<T> inverse(_Quaternion<T> q){
+    T r = q.s*q.s + q.i*q.i + q.j*q.j + q.k*q.k;
+    return {q.s/r, -q.i/r, -q.j/r, -q.k/r};
+}
+
 typedef _Quaternion<float> Quaternion;
 
 inline float dot(Quaternion q1, Quaternion q2){

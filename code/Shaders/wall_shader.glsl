@@ -23,10 +23,12 @@ void main(){
 
 #elif defined FRAGMENT_SHADER
 
+uniform vec4 u_background_color;
+
 varying vec4 v_color;
 
 void main(){
-    gl_FragColor = v_color;
+    gl_FragColor = mix(v_color, u_background_color, max(5.0*gl_FragCoord.z-4.0, 0.0));
 }
 
 #endif
@@ -56,10 +58,12 @@ void main(){
 }
 #elif defined FRAGMENT_SHADER
 
+uniform vec4 u_background_color;
+
 varying mediump vec4 v_color;
 
 void main(){
-    gl_FragColor = v_color;
+    gl_FragColor = mix(v_color, u_background_color, max(5.0*gl_FragCoord.z-4.0, 0.0));
 }
 
 #endif
