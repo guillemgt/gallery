@@ -6,13 +6,13 @@
 
 OsFile openGameFile(char *name, const char *mode){
     char dst[MAX_PATH_LENGTH];
-    sprintf(dst, "../babel/Bundle/%s", name);
+    sprintf(dst, "../bundle/%s", name);
     FILE *fp = fopen(dst, mode);
     return fp;
 }
 OsFile openUserFile(char *name, const char *mode){
     char dst[MAX_PATH_LENGTH];
-    sprintf(dst, "../babel/Bundle/%s", name);
+    sprintf(dst, "../bundle/%s", name);
     FILE *fp = fopen(dst, mode);
     return fp;
 }
@@ -31,10 +31,10 @@ OsFile openUserFile(String name, const char *mode){
 }
 
 void getGameFilePath(char *name, char *dst){
-    sprintf(dst, "../babel/Bundle/%s", name);
+    sprintf(dst, "../bundle/%s", name);
 }
 void getUserFilePath(char *name, char *dst){
-    sprintf(dst, "../babel/Bundle/%s", name);
+    sprintf(dst, "../bundle/%s", name);
 }
 
 void readFile(void *dest, unsigned int size, unsigned int amount, OsFile fp){

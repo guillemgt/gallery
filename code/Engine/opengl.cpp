@@ -65,6 +65,10 @@ void setVectorStaticBuffer(GLuint buffer, Vertex_PNC *vert, unsigned int size){
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, size*sizeof(Vertex_PNC), vert, GL_STATIC_DRAW);
 }
+void setVectorStaticBuffer(GLuint buffer, Vertex_PNT *vert, unsigned int size){
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, size*sizeof(Vertex_PNT), vert, GL_STATIC_DRAW);
+}
 void setVectorDynamicBuffer(GLuint buffer, Vertex_PC *vert, unsigned int size){
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, size*sizeof(Vertex_PC), vert, GL_DYNAMIC_DRAW);

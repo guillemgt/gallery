@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2718EB1F9CBB29009A37D9 /* walls.model in Resources */ = {isa = PBXBuildFile; fileRef = 9A2718EA1F9CBB1F009A37D9 /* walls.model */; };
+		9A2718ED1F9CBB50009A37D9 /* osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2718EC1F9CBB50009A37D9 /* osx.mm */; };
 		9A2E9A571F964AB100A772AE /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A561F964AAE00A772AE /* stb_image_aug.c */; };
 		9A2E9A6F1F978A9F00A772AE /* bigint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A6E1F978A8600A772AE /* bigint.cpp */; };
 		9A2E9A701F978AA100A772AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9A6D1F978A8600A772AE /* main.cpp */; };
@@ -28,6 +30,10 @@
 
 /* Begin PBXFileReference section */
 		9A2718E61F9A0490009A37D9 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = main.hpp; path = code/main.hpp; sourceTree = SOURCE_ROOT; };
+		9A2718E71F9BBD90009A37D9 /* picture_shader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = picture_shader.glsl; path = code/Shaders/picture_shader.glsl; sourceTree = SOURCE_ROOT; };
+		9A2718EA1F9CBB1F009A37D9 /* walls.model */ = {isa = PBXFileReference; lastKnownFileType = file; name = walls.model; path = bundle/walls.model; sourceTree = SOURCE_ROOT; };
+		9A2718EC1F9CBB50009A37D9 /* osx.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = osx.mm; sourceTree = "<group>"; };
+		9A2718EE1F9CBB73009A37D9 /* osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = osx.h; sourceTree = "<group>"; };
 		9A2E9A511F9649CF00A772AE /* stb_image_aug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_image_aug.h; path = code/Engine/Include/stb_image/stb_image_aug.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A521F9649CF00A772AE /* stbi_DDS_aug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug.h; path = code/Engine/Include/stb_image/stbi_DDS_aug.h; sourceTree = SOURCE_ROOT; };
 		9A2E9A531F9649CF00A772AE /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug_c.h; path = code/Engine/Include/stb_image/stbi_DDS_aug_c.h; sourceTree = SOURCE_ROOT; };
@@ -86,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A2718E91F9CBB10009A37D9 /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				9A2718EA1F9CBB1F009A37D9 /* walls.model */,
+			);
+			name = Bundle;
+			path = gallery/Bundle;
+			sourceTree = "<group>";
+		};
 		9A2E9A431F96494000A772AE /* stb_image */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +115,7 @@
 		9A2E9A641F97831D00A772AE /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				9A2718E71F9BBD90009A37D9 /* picture_shader.glsl */,
 				9A2E9A651F97832800A772AE /* wall_shader.glsl */,
 			);
 			path = Shaders;
@@ -129,6 +145,7 @@
 				9ACF89361F963F0700BCE1C5 /* libfreetype.6.dylib */,
 				9ACF89311F963EEE00BCE1C5 /* SDL2.framework */,
 				9ACF89381F963F7E00BCE1C5 /* Engine */,
+				9A2718E91F9CBB10009A37D9 /* Bundle */,
 				9ACF89391F963F8800BCE1C5 /* gallery */,
 				9ACF891F1F963CFA00BCE1C5 /* gallery-osx */,
 				9ACF891E1F963CFA00BCE1C5 /* Products */,
@@ -150,6 +167,8 @@
 				9ACF89231F963CFA00BCE1C5 /* Assets.xcassets */,
 				9ACF89281F963CFA00BCE1C5 /* Info.plist */,
 				9ACF892B1F963CFB00BCE1C5 /* gallery_osx.entitlements */,
+				9A2718EE1F9CBB73009A37D9 /* osx.h */,
+				9A2718EC1F9CBB50009A37D9 /* osx.mm */,
 			);
 			path = "gallery-osx";
 			sourceTree = "<group>";
@@ -259,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACF89241F963CFA00BCE1C5 /* Assets.xcassets in Resources */,
+				9A2718EB1F9CBB29009A37D9 /* walls.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +291,7 @@
 			files = (
 				9A2E9A571F964AB100A772AE /* stb_image_aug.c in Sources */,
 				9ACF89511F96403700BCE1C5 /* engine.cpp in Sources */,
+				9A2718ED1F9CBB50009A37D9 /* osx.mm in Sources */,
 				9ACF89521F96403800BCE1C5 /* freetype.cpp in Sources */,
 				9ACF89531F96403A00BCE1C5 /* memory.cpp in Sources */,
 				9ACF89541F96403D00BCE1C5 /* opengl.cpp in Sources */,

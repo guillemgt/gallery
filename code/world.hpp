@@ -18,14 +18,20 @@ const int   u64_per_picture_coord =   u64_per_picture/2;
 typedef BigUint<u64_per_picture> PictureCoords;
 
 
-const float square_size = 8.f;
-const float wall_size   = 5.f;
-const float wall_height = 5.f;
+const float square_size    = 8.f;
+const float wall_size      = 5.f;
+const float wall_height    = 5.f;
+const float picture_size   = 1.f;
+const float picture_margin = (wall_height-picture_size)/2.f;
 
-const float loaded_squares_radius_float = 3.f;
-const int   loaded_squares_radius_int = 3;
+const float loaded_squares_radius_float = 6.f;
+const int   loaded_squares_radius_int = 6;
 const int   total_loaded_squares = 2*loaded_squares_radius_int+1;
 
+
+void load_world();
+
 void load_walls_into_buffer(BufferAndCount *buffer);
+void load_pictures_into_buffer(BufferAndCount *buffer);
 
 #endif /* world_hpp */

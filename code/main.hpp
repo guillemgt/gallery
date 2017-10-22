@@ -8,7 +8,7 @@ struct Player {
     Vec2 position_relative_to_coords;
     Vec2 v;
     Vec3 looking_direction;
-    Quaternion looking_quaternion;
+    Angle looking_angle;
     bool falling;
 };
 
